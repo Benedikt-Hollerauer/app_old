@@ -15,35 +15,35 @@ class CreateItemUseCaseTestImpl extends AnyWordSpec
             }
         }
 
-        "a negative CreateItemInput.itemId parameter is passed" should
+        "a negative CreateItemInput.itemPrice parameter is passed" should
         {
-            "return a Left[List[CreateItemUseCaseError.ItemIdConstructionFailed[IdValueError.IdIsNegative[Long]]]]" in
+            "return a Left[List[CreateItemUseCaseError.ItemMoneyConstructionFailed[MoneyValueError.AmountIsZeroOrLess[Double]]]]" in
             {
-                `tests if CreateItemUseCase.createValidateSaveGetItemEntity method returns a Left[List[CreateItemUseCaseError.ItemIdConstructionFailed[IdValueError.IdIsNegative[Long]]]] when a negative CreateItemInput.itemId parameter is passed`
+                `tests if CreateItemUseCase.createValidateSaveGetItemEntity method returns a Left[List[CreateItemUseCaseError.ItemMoneyConstructionFailed[MoneyValueError.AmountIsZeroOrLess[Double]]]] when a negative CreateItemInput.itemPrice parameter is passed`
             }
         }
 
-        "ItemRepository.saveItemToRepository failed" should
+        "ItemRepository.saveItem failed" should
         {
-            "return a Left[List[CreateItemUseCaseError.ItemRepositoryMethodCallFailed[ItemRepositoryError.SavingItemToRepositoryFailed]]]" in
+            "return a Left[List[CreateItemUseCaseError.ItemRepositoryMethodCallFailed[ItemRepositoryError.SaveItemFailed[Throwable]]]]" in
             {
-                `tests if CreateItemUseCase.createValidateSaveGetItemEntity method returns a Left[List[CreateItemUseCaseError.ItemRepositoryMethodCallFailed[ItemRepositoryError.SavingItemToRepositoryFailed]]] when ItemRepository.saveItemToRepository failed`
+                `tests if CreateItemUseCase.createValidateSaveGetItemEntity method returns a Left[List[CreateItemUseCaseError.ItemRepositoryMethodCallFailed[ItemRepositoryError.SaveItemFailed[Throwable]]]] when ItemRepository.saveItem failed`
             }
         }
 
-        "UserRepository.userIsInRepository failed" should
+        "UserRepository.findUserById failed" should
         {
-            "return a Left[List[CreateItemUseCaseError.UserRepositoryMethodCallFailed[UserRepositoryError.CheckIfUserIsInRepositoryFailed]]]" in
+            "return a Left[List[CreateItemUseCaseError.UserRepositoryMethodCallFailed[UserRepositoryError.FindUserByIdFailed[Throwable]]]]" in
             {
-                `tests if CreateItemUseCase.createValidateSaveGetItemEntity method returns a Left[List[CreateItemUseCaseError.UserRepositoryMethodCallFailed[UserRepositoryError.CheckIfUserIsInRepositoryFailed]]] when UserRepository.userIsInRepository failed`
+                `tests if CreateItemUseCase.createValidateSaveGetItemEntity method returns a Left[List[CreateItemUseCaseError.UserRepositoryMethodCallFailed[UserRepositoryError.FindUserByIdFailed[Throwable]]]] when UserRepository.findUserById failed`
             }
         }
 
-        "a to short CreateItemInput.itemTitle parameter is passed and ItemRepository.itemIdIsInRepository failed" should
+        "a to short CreateItemInput.itemTitle parameter is passed and ItemRepository.doesItemIdExist failed" should
         {
-            "return a Left[List[CreateItemUseCaseError.ItemTitleConstructionFailed[TitleValueError.TitleIsToShort[String]], CreateItemUseCaseError.ItemRepositoryMethodCallFailed[ItemRepositoryError.CheckIfItemIdIsInRepositoryFailed]]]" in
+            "return a Left[List[CreateItemUseCaseError.ItemTitleConstructionFailed[TitleValueError.TitleIsToShort[String]], CreateItemUseCaseError.ItemRepositoryMethodCallFailed[ItemRepositoryError.DoesItemIdExistFailed[Throwable]]]]" in
             {
-                `tests if CreateItemUseCase.createValidateSaveGetItemEntity method returns a Left[List[CreateItemUseCaseError.ItemTitleConstructionFailed[TitleValueError.TitleIsToShort[String]], CreateItemUseCaseError.ItemRepositoryMethodCallFailed[ItemRepositoryError.CheckIfItemIdIsInRepositoryFailed]]] when a to short CreateItemInput.itemTitle parameter is passed and ItemRepository.itemIdIsInRepository failed`
+                `tests if CreateItemUseCase.createValidateSaveGetItemEntity method returns a Left[List[CreateItemUseCaseError.ItemTitleConstructionFailed[TitleValueError.TitleIsToShort[String]], CreateItemUseCaseError.ItemRepositoryMethodCallFailed[ItemRepositoryError.DoesItemIdExistFailed[Throwable]]]] when a to short CreateItemInput.itemTitle parameter is passed and ItemRepository.doesItemIdExist failed`
             }
         }
     }
